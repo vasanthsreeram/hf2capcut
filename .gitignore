@@ -1,0 +1,21 @@
+# Dependencies
+node_modules/
+package-lock.json
+npm-debug.log*
+yarn-error.log*
+
+# Build / converter output
+capcut-output/
+output/
+dist/
+*.draft/
+
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+*.swp
+.idea/
+.vscode/
+
+# Logs
+*.log

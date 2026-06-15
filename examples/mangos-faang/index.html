@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1080, height=1920">
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { margin: 0; width: 1080px; height: 1920px; overflow: hidden; background: #09090b; }
+      body { font-family: "Inter", sans-serif; color: #fafafa; }
+
+      /* ===== SHIMMER TEXT ===== */
+      .shimmer-text {
+        background: linear-gradient(
+          120deg,
+          #fafafa 0%,
+          #fafafa 40%,
+          #38bdf8 50%,
+          #fafafa 60%,
+          #fafafa 100%
+        );
+        background-size: 200% 100%;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+      .shimmer-text-green {
+        background: linear-gradient(
+          120deg,
+          #fafafa 0%,
+          #fafafa 40%,
+          #22c55e 50%,
+          #fafafa 60%,
+          #fafafa 100%
+        );
+        background-size: 200% 100%;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+      .shimmer-text-amber {
+        background: linear-gradient(
+          120deg,
+          #fafafa 0%,
+          #fafafa 40%,
+          #f59e0b 50%,
+          #fafafa 60%,
+          #fafafa 100%
+        );
+        background-size: 200% 100%;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      /* ===== GLOW CARD ===== */
+      .glow-card {
+        position: relative;
+        border-radius: 24px;
+        background: rgba(255,255,255,0.03);
+        border: 1px solid rgba(255,255,255,0.08);
+        overflow: hidden;
+      }
+      .glow-card-inner {
+        position: absolute;
+        inset: -1px;
+        border-radius: 24px;
+        background: radial-gradient(600px circle at 50% 50%, rgba(56,189,248,0.12), transparent 40%);
+        pointer-events: none;
+        z-index: 0;
+      }
+
+      /* ===== BORDER BEAM (real element, not pseudo) ===== */
+      .border-beam-ring {
+        position: absolute;
+        inset: 0;
+        border-radius: 24px;
+        pointer-events: none;
+        z-index: 0;
+        border: 2px solid transparent;
+        background: conic-gradient(from 0deg, transparent 0%, #38bdf8 25%, transparent 50%) border-box;
+        -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+        -webkit-mask-composite: xor;
+        mask-composite: exclude;
+      }
+
+      /* ===== NUMBER TICKER ===== */
+      .ticker-value {
+        font-variant-numeric: tabular-nums;
+        font-family: "JetBrains Mono", monospace;
+      }
+
+      /* ===== MARQUEE ===== */
+      .marquee-track {
+        display: flex;
+        gap: 32px;
+        white-space: nowrap;
+      }
+      .marquee-item {
+        font-size: 28px;
+        font-weight: 600;
+        color: rgba(255,255,255,0.12);
+        text-transform: uppercase;
+        letter-spacing: 4px;
+        flex-shrink: 0;
+      }
+
+      /* ===== GRID BG ===== */
+      .bg-grid {
+        position: absolute;
+        inset: 0;
+        background-image:
+          linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+        background-size: 60px 60px;
+        pointer-events: none;
+      }
+
+      /* ===== SCENE ===== */
+      .scene-content {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+        padding: 120px 80px;
+        gap: 24px;
+        position: relative;
+        z-index: 2;
+      }
+
+      /* ===== ACRONYM LETTER ===== */
+      .acronym-letter {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 120px;
+        height: 120px;
+        border-radius: 20px;
+        font-size: 64px;
+        font-weight: 900;
+        position: relative;
+      }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  </head>
+  <body>
+    <div data-hf-id="hf-ijvk" id="root" data-composition-id="main" data-start="0" data-duration="35" data-width="1080" data-height="1920">
+      <!-- GLOBAL BG -->
+      <div data-hf-id="hf-yqqm" class="bg-grid"></div>
+
+      <!-- ======================================= -->
+      <!-- SCENE 1: HOOK — "FAANG is dead"   0-6s  -->
+      <!-- ======================================= -->
+      <div data-hf-id="hf-hlgi" id="scene1" class="clip scene-content" data-start="0" data-duration="6" data-track-index="1">
+        <div data-hf-id="hf-m6v4" style="display:flex; flex-direction:column; align-items:center; gap:32px; text-align:center;">
+          <div data-hf-id="hf-pghy" id="s1-label" style="font-size:24px; font-weight:600; color:#38bdf8; letter-spacing:8px; text-transform:uppercase;">Breaking</div>
+          <div data-hf-id="hf-oxpm" id="s1-title" class="shimmer-text" style="font-size:96px; font-weight:900; line-height:1.05; max-width:900px;">FAANG is dead.</div>
+          <div data-hf-id="hf-4rec" id="s1-sub" style="font-size:32px; font-weight:500; color:rgba(255,255,255,0.5); max-width:700px;">A $16 trillion shift is rewriting the rules of tech investing</div>
+        </div>
+      </div>
+
+      <!-- ======================================= -->
+      <!-- SCENE 2: REVEAL — "Meet MANGOS"  6-14s  -->
+      <!-- ======================================= -->
+      <div data-hf-id="hf-80t2" id="scene2" class="clip scene-content" data-start="8.08" data-duration="8" data-track-index="2">
+        <div data-hf-id="hf-sxnv" style="display:flex; flex-direction:column; align-items:center; gap:48px; text-align:center;">
+          <div data-hf-id="hf-4rak" id="s2-label" style="font-size:24px; font-weight:600; color:#22c55e; letter-spacing:8px; text-transform:uppercase;">The new era</div>
+          <div data-hf-id="hf-ftjx" id="s2-title" style="font-size:80px; font-weight:900;">
+            <span data-hf-id="hf-xknm" class="shimmer-text-green">Meet MANGOS</span>
+          </div>
+          <div data-hf-id="hf-dpls" id="s2-letters" style="display:flex; gap:16px; align-items:center;">
+            <div data-hf-id="hf-paw3" class="acronym-letter" id="letter-M" style="background:linear-gradient(135deg,#3b82f6 0%,#1d4ed8 100%); color:#fff;">M</div>
+            <div data-hf-id="hf-by5d" class="acronym-letter" id="letter-A" style="background:linear-gradient(135deg,#8b5cf6 0%,#6d28d9 100%); color:#fff;">A</div>
+            <div data-hf-id="hf-ad2r" class="acronym-letter" id="letter-N" style="background:linear-gradient(135deg,#22c55e 0%,#15803d 100%); color:#fff;">N</div>
+            <div data-hf-id="hf-1k4u" class="acronym-letter" id="letter-G" style="background:linear-gradient(135deg,#f59e0b 0%,#d97706 100%); color:#fff;">G</div>
+            <div data-hf-id="hf-okn6" class="acronym-letter" id="letter-O" style="background:linear-gradient(135deg,#ef4444 0%,#b91c1c 100%); color:#fff;">O</div>
+            <div data-hf-id="hf-3v7y" class="acronym-letter" id="letter-S" style="background:linear-gradient(135deg,#06b6d4 0%,#0891b2 100%); color:#fff;">S</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ======================================= -->
+      <!-- SCENE 3: BREAKDOWN — The Big 6  14-26s  -->
+      <!-- ======================================= -->
+      <div data-hf-id="hf-t5mm" id="scene3" class="clip scene-content" data-start="14" data-duration="12" data-track-index="3">
+        <div data-hf-id="hf-pq2j" style="display:flex; flex-direction:column; gap:20px; width:100%;">
+          <div data-hf-id="hf-6xih" id="s3-title" style="font-size:48px; font-weight:800; text-align:center; margin-bottom:4px;">
+            <span data-hf-id="hf-5hpz" class="shimmer-text-amber">The Big 6</span>
+          </div>
+
+          <!-- Meta -->
+          <div data-hf-id="hf-381w" id="card-meta" class="glow-card" style="padding:28px 36px; display:flex; align-items:center; gap:24px; position:relative;">
+            <div data-hf-id="hf-g5md" class="glow-card-inner"></div>
+            <div data-hf-id="hf-9sqb" style="width:56px; height:56px; border-radius:14px; background:linear-gradient(135deg,#3b82f6,#1d4ed8); display:flex; align-items:center; justify-content:center; font-size:24px; font-weight:900; flex-shrink:0; z-index:1;">M</div>
+            <div data-hf-id="hf-wd2j" style="flex:1; z-index:1;"><div data-hf-id="hf-9n28" style="font-size:28px; font-weight:700;">Meta</div><div data-hf-id="hf-v1dx" style="font-size:18px; color:rgba(255,255,255,0.5);">AI infrastructure + Llama models</div></div>
+            <div data-hf-id="hf-ahvs" class="ticker-value" id="ticker-meta" style="font-size:32px; font-weight:700; color:#22c55e; z-index:1;">+340%</div>
+          </div>
+
+          <!-- Anthropic -->
+          <div data-hf-id="hf-of8d" id="card-anthropic" class="glow-card" style="padding:28px 36px; display:flex; align-items:center; gap:24px; position:relative;">
+            <div data-hf-id="hf-5up5" class="glow-card-inner"></div>
+            <div data-hf-id="hf-nelb" style="width:56px; height:56px; border-radius:14px; background:linear-gradient(135deg,#8b5cf6,#6d28d9); display:flex; align-items:center; justify-content:center; font-size:24px; font-weight:900; flex-shrink:0; z-index:1;">A</div>
+            <div data-hf-id="hf-7ojv" style="flex:1; z-index:1;"><div data-hf-id="hf-mynv" style="font-size:28px; font-weight:700;">Anthropic</div><div data-hf-id="hf-sabq" style="font-size:18px; color:rgba(255,255,255,0.5);">Claude · Safety-first AI</div></div>
+            <div data-hf-id="hf-23og" class="ticker-value" id="ticker-anthropic" style="font-size:32px; font-weight:700; color:#22c55e; z-index:1;">$60B</div>
+          </div>
+
+          <!-- Nvidia -->
+          <div data-hf-id="hf-djye" id="card-nvidia" class="glow-card" style="padding:28px 36px; display:flex; align-items:center; gap:24px; position:relative;">
+            <div data-hf-id="hf-71m8" class="glow-card-inner"></div>
+            <div data-hf-id="hf-mhv0" style="width:56px; height:56px; border-radius:14px; background:linear-gradient(135deg,#22c55e,#15803d); display:flex; align-items:center; justify-content:center; font-size:24px; font-weight:900; flex-shrink:0; z-index:1;">N</div>
+            <div data-hf-id="hf-7a8u" style="flex:1; z-index:1;"><div data-hf-id="hf-nzom" style="font-size:28px; font-weight:700;">Nvidia</div><div data-hf-id="hf-8y3e" style="font-size:18px; color:rgba(255,255,255,0.5);">The GPU monopoly</div></div>
+            <div data-hf-id="hf-ejzc" class="ticker-value" id="ticker-nvidia" style="font-size:32px; font-weight:700; color:#22c55e; z-index:1;">$3T</div>
+          </div>
+
+          <!-- Google -->
+          <div data-hf-id="hf-zo06" id="card-google" class="glow-card" style="padding:28px 36px; display:flex; align-items:center; gap:24px; position:relative;">
+            <div data-hf-id="hf-6nb7" class="glow-card-inner"></div>
+            <div data-hf-id="hf-zj8c" style="width:56px; height:56px; border-radius:14px; background:linear-gradient(135deg,#f59e0b,#d97706); display:flex; align-items:center; justify-content:center; font-size:24px; font-weight:900; flex-shrink:0; z-index:1;">G</div>
+            <div data-hf-id="hf-6vxt" style="flex:1; z-index:1;"><div data-hf-id="hf-oob2" style="font-size:28px; font-weight:700;">Google</div><div data-hf-id="hf-npae" style="font-size:18px; color:rgba(255,255,255,0.5);">DeepMind + Gemini</div></div>
+            <div data-hf-id="hf-ahvy" class="ticker-value" id="ticker-google" style="font-size:32px; font-weight:700; color:#22c55e; z-index:1;">$2.1T</div>
+          </div>
+
+          <!-- OpenAI -->
+          <div data-hf-id="hf-o8cl" id="card-openai" class="glow-card" style="padding:28px 36px; display:flex; align-items:center; gap:24px; position:relative;">
+            <div data-hf-id="hf-4ns2" class="glow-card-inner"></div>
+            <div data-hf-id="hf-6emc" style="width:56px; height:56px; border-radius:14px; background:linear-gradient(135deg,#ef4444,#b91c1c); display:flex; align-items:center; justify-content:center; font-size:24px; font-weight:900; flex-shrink:0; z-index:1;">O</div>
+            <div data-hf-id="hf-6hms" style="flex:1; z-index:1;"><div data-hf-id="hf-ynyj" style="font-size:28px; font-weight:700;">OpenAI</div><div data-hf-id="hf-0s4h" style="font-size:18px; color:rgba(255,255,255,0.5);">ChatGPT · GPT-5 · IPO coming</div></div>
+            <div data-hf-id="hf-y499" class="ticker-value" id="ticker-openai" style="font-size:32px; font-weight:700; color:#22c55e; z-index:1;">$300B</div>
+          </div>
+
+          <!-- SpaceX -->
+          <div data-hf-id="hf-nn41" id="card-spacex" class="glow-card" style="padding:28px 36px; display:flex; align-items:center; gap:24px; position:relative;">
+            <div data-hf-id="hf-49h1" class="glow-card-inner"></div>
+            <div data-hf-id="hf-0u4u" style="width:56px; height:56px; border-radius:14px; background:linear-gradient(135deg,#06b6d4,#0891b2); display:flex; align-items:center; justify-content:center; font-size:24px; font-weight:900; flex-shrink:0; z-index:1;">S</div>
+            <div data-hf-id="hf-63br" style="flex:1; z-index:1;"><div data-hf-id="hf-e4cv" style="font-size:28px; font-weight:700;">SpaceX</div><div data-hf-id="hf-936a" style="font-size:18px; color:rgba(255,255,255,0.5);">Starlink · Space infrastructure</div></div>
+            <div data-hf-id="hf-siya" class="ticker-value" id="ticker-spacex" style="font-size:32px; font-weight:700; color:#22c55e; z-index:1;">$350B</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ======================================= -->
+      <!-- SCENE 4: CTA — "Are you positioned?" 26-35s -->
+      <!-- ======================================= -->
+      <div data-hf-id="hf-imhv" id="scene4" class="clip scene-content" data-start="26" data-duration="9" data-track-index="4">
+        <div data-hf-id="hf-fhmb" style="display:flex; flex-direction:column; align-items:center; gap:40px; text-align:center;">
+          <div data-hf-id="hf-jv2t" id="s4-title" style="font-size:72px; font-weight:900; line-height:1.1; max-width:800px;">
+            <span data-hf-id="hf-kpxq" class="shimmer-text">Are you<br data-hf-id="hf-x5px">positioned?</span>
+          </div>
+          <div data-hf-id="hf-gkcv" id="s4-sub" style="font-size:28px; font-weight:500; color:rgba(255,255,255,0.5); max-width:600px;">
+            The $16 trillion AI shift isn't coming.<br data-hf-id="hf-rsrt">It's already here.
+          </div>
+          <div data-hf-id="hf-dtd9" id="s4-cta" style="margin-top:16px; padding:20px 64px; border-radius:999px; background:linear-gradient(135deg,#38bdf8,#818cf8); font-size:28px; font-weight:700; letter-spacing:2px; text-transform:uppercase;">
+            Follow for more
+          </div>
+        </div>
+      </div>
+
+      <!-- BOTTOM MARQUEE -->
+      <div data-hf-id="hf-lb25" id="marquee-wrap" class="clip" data-start="0" data-duration="35" data-track-index="5" data-layout-allow-overflow="" style="position:absolute; bottom:40px; left:0; right:0; overflow:hidden; z-index:1;">
+        <div data-hf-id="hf-9tjc" class="marquee-track" id="marquee">
+          <span data-hf-id="hf-61ag" class="marquee-item">Meta</span><span data-hf-id="hf-n6ee" class="marquee-item">·</span>
+          <span data-hf-id="hf-jao3" class="marquee-item">Anthropic</span><span data-hf-id="hf-w3hm" class="marquee-item">·</span>
+          <span data-hf-id="hf-1sj2" class="marquee-item">Nvidia</span><span data-hf-id="hf-whsn" class="marquee-item">·</span>
+          <span data-hf-id="hf-hi3a" class="marquee-item">Google</span><span data-hf-id="hf-ww3o" class="marquee-item">·</span>
+          <span data-hf-id="hf-nub7" class="marquee-item">OpenAI</span><span data-hf-id="hf-xaep" class="marquee-item">·</span>
+          <span data-hf-id="hf-w4nr" class="marquee-item">SpaceX</span><span data-hf-id="hf-xopq" class="marquee-item">·</span>
+          <span data-hf-id="hf-5vgg" class="marquee-item">Meta</span><span data-hf-id="hf-y30r" class="marquee-item">·</span>
+          <span data-hf-id="hf-p8oz" class="marquee-item">Anthropic</span><span data-hf-id="hf-yhbs" class="marquee-item">·</span>
+          <span data-hf-id="hf-kvjm" class="marquee-item">Nvidia</span><span data-hf-id="hf-yvmt" class="marquee-item">·</span>
+          <span data-hf-id="hf-xynu" class="marquee-item">Google</span><span data-hf-id="hf-z9xu" class="marquee-item">·</span>
+          <span data-hf-id="hf-ttar" class="marquee-item">OpenAI</span><span data-hf-id="hf-ukxa" class="marquee-item">·</span>
+          <span data-hf-id="hf-idg7" class="marquee-item">SpaceX</span><span data-hf-id="hf-u6m9" class="marquee-item">·</span>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true });
+
+      /* ===== GLOBAL SHIMMER ===== */
+      tl.to(".shimmer-text", {
+        backgroundPosition: "200% center", duration: 2, ease: "none",
+        repeat: 15
+      }, 0);
+      tl.to(".shimmer-text-green", {
+        backgroundPosition: "200% center", duration: 2, ease: "none",
+        repeat: 15
+      }, 0);
+      tl.to(".shimmer-text-amber", {
+        backgroundPosition: "200% center", duration: 2, ease: "none",
+        repeat: 15
+      }, 0);
+
+      /* ===== GLOBAL MARQUEE ===== */
+      tl.to("#marquee", {
+        x: -1200, duration: 35, ease: "none", repeat: 0
+      }, 0);
+
+      /* ===== SCENE 1 ENTRANCES (0-6s) ===== */
+      tl.from("#s1-label", { y: -30, opacity: 0, duration: 0.6, ease: "power3.out" }, 0.2);
+      tl.from("#s1-title", { y: 60, opacity: 0, scale: 0.9, duration: 0.8, ease: "back.out(1.4)" }, 0.4);
+      tl.from("#s1-sub", { y: 40, opacity: 0, duration: 0.6, ease: "power2.out" }, 0.8);
+
+      /* ===== SCENE 2 ENTRANCES (6-14s) ===== */
+      tl.from("#s2-label", { y: -30, opacity: 0, duration: 0.5, ease: "power3.out" }, 6.2);
+      tl.from("#s2-title", { y: 50, opacity: 0, scale: 0.85, duration: 0.7, ease: "back.out(1.5)" }, 6.4);
+
+      tl.from("#letter-M", { y: -120, opacity: 0, scale: 0, rotation: -20, duration: 0.5, ease: "back.out(2)" }, 7.0);
+      tl.from("#letter-A", { y: -120, opacity: 0, scale: 0, rotation: -15, duration: 0.5, ease: "back.out(2)" }, 7.15);
+      tl.from("#letter-N", { y: -120, opacity: 0, scale: 0, rotation: -10, duration: 0.5, ease: "back.out(2)" }, 7.3);
+      tl.from("#letter-G", { y: -120, opacity: 0, scale: 0, rotation: 10, duration: 0.5, ease: "back.out(2)" }, 7.45);
+      tl.from("#letter-O", { y: -120, opacity: 0, scale: 0, rotation: 15, duration: 0.5, ease: "back.out(2)" }, 7.6);
+      tl.from("#letter-S", { y: -120, opacity: 0, scale: 0, rotation: 20, duration: 0.5, ease: "back.out(2)" }, 7.75);
+
+      tl.to(".acronym-letter", { scale: 1.05, duration: 0.4, ease: "power1.inOut", yoyo: true, repeat: 2 }, 8.5);
+
+      /* ===== SCENE 3 ENTRANCES (14-26s) ===== */
+      tl.from("#s3-title", { y: -40, opacity: 0, duration: 0.5, ease: "power3.out" }, 14.2);
+
+      var cards = ["#card-meta", "#card-anthropic", "#card-nvidia", "#card-google", "#card-openai", "#card-spacex"];
+      cards.forEach(function(card, i) {
+        tl.from(card, { x: 200, opacity: 0, duration: 0.6, ease: "power3.out" }, 14.6 + i * 0.5);
+        // Animate glow inner on each card
+        tl.from(card + " .glow-card-inner", {
+          opacity: 0, duration: 0.5, ease: "power2.out"
+        }, 14.6 + i * 0.5);
+      });
+
+      // Ticker pop
+      var tickers = ["#ticker-meta","#ticker-anthropic","#ticker-nvidia","#ticker-google","#ticker-openai","#ticker-spacex"];
+      tickers.forEach(function(tid, i) {
+        tl.from(tid, { scale: 0, opacity: 0, duration: 0.4, ease: "back.out(2)" }, 15.3 + i * 0.5);
+      });
+
+      /* ===== SCENE 4 ENTRANCES (26-35s) ===== */
+      tl.from("#s4-title", { y: 60, opacity: 0, scale: 0.9, duration: 0.8, ease: "expo.out" }, 26.3);
+      tl.from("#s4-sub", { y: 40, opacity: 0, duration: 0.6, ease: "power2.out" }, 26.8);
+      tl.from("#s4-cta", { y: 30, opacity: 0, scale: 0.8, duration: 0.5, ease: "back.out(1.7)" }, 27.3);
+      tl.to("#s4-cta", { scale: 1.05, duration: 0.6, ease: "power1.inOut", yoyo: true, repeat: 3 }, 28.5);
+
+      window.__timelines["main"] = tl;
+    </script>
+  </body>
+</html>

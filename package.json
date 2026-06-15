@@ -1,0 +1,39 @@
+{
+  "name": "hf2capcut",
+  "version": "1.0.0",
+  "description": "Convert HyperFrames HTML video compositions to CapCut / JianYing project files (draft_content.json).",
+  "type": "module",
+  "bin": {
+    "hf2capcut": "./hf2capcut.mjs"
+  },
+  "main": "hf2capcut.mjs",
+  "files": [
+    "hf2capcut.mjs",
+    "README.md"
+  ],
+  "scripts": {
+    "test": "node hf2capcut.mjs convert examples/mangos-faang/index.html -o /tmp/hf2capcut-test/"
+  },
+  "keywords": [
+    "capcut",
+    "jianying",
+    "hyperframes",
+    "video",
+    "converter",
+    "draft_content",
+    "cli"
+  ],
+  "author": "vasanthsreeram",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "cheerio": "^1.0.0",
+    "commander": "^12.1.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vasanthsreeram/hf2capcut.git"
+  }
+}
